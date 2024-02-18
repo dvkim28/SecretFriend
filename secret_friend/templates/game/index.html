@@ -1,0 +1,48 @@
+{% extends 'general/base.html' %}
+{% block body %}
+ <!-- messages -->
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" id="myAlert"> <!-- Add id="myAlert" to the alert div -->
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+<script>
+        // JavaScript to close the alert after 3 seconds
+        setTimeout(function() {
+            var alert = document.getElementById("myAlert");
+            alert.classList.add("fade-out");
+            setTimeout(function() {
+                alert.style.display = "none";
+            }, 2000); // Adjust the time for the fade out effect
+        }, 1500);
+    </script>
+
+    <style>
+        /* CSS to position the alert absolutely */
+         #myAlert {
+            position: fixed;
+            bottom: 20px; /* Adjust the bottom position as needed */
+            right: 20px; /* Adjust the right position as needed */
+            z-index: 9999; /* Ensure the alert appears above other content */
+            opacity: 1;
+            transition: opacity 1s ease; /* Adjust the transition duration as needed */
+        }
+
+        #myAlert.fade-out {
+            opacity: 0;
+        }
+    </style>
+
+    <p> Hi {{user.username}}</p>
+{% endblock %}
