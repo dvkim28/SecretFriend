@@ -21,15 +21,12 @@
         <td>Open</td>
         {% endif %}
         <td>
-           <form action="{% url 'rooms:passcheck' %}" method="post">
-    {% csrf_token %}
-    {{ form.password }}
-    <input type="hidden" name="room_id" value="{{ room.pk }}">
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-        </td>
-        <td><a href="{% url 'rooms:RoomDetailView' pk=room.pk %} ">check</a></td>
+            <form action="{% url 'rooms:passcheck' %}" method="post">
+                {% csrf_token %}
+                {{ form.password }}
+                <input type="hidden" name="room_id" value="{{ room.pk }}">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </td>
     </tr>
     {% endfor %}

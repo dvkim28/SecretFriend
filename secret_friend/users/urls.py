@@ -16,15 +16,14 @@ Including another URLconf
 """
 from django.urls import path
 
-from .views import registration, logout_view, login_view
+from .views import login_view, logout_view, ProfileView, EmailVerificationView, UserRegistrationView
 
 app_name = 'users'
 
 urlpatterns = [
-    path('registration/', registration, name='userRegistrationView'),
+    path('registration/', UserRegistrationView.as_view(), name='userRegistrationView'),
     path('logout/', logout_view, name='logoutView'),
     path('login/', login_view, name='loginView'),
-
-
-
+    path('profile/<int:pk>/', ProfileView.as_view(), name='profileView'),
+    path('verified/<str:email>/<uuid:code>/', EmailVerificationView.as_view(), name='EmailVerificationView'),
 ]

@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-zi&jex-bco2pq03lev4r@1067*v$*+pci=%85sovxuwt%ag8&6
 DEBUG = True
 
 ALLOWED_HOSTS = []
+DOMAIN_NAME = 'http://127.0.0.1:8000'
 
 
 # Application definition
@@ -123,4 +124,12 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#
+AUTH_USER_MODEL = 'users.User'
+
+#Send email notification
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'd.villarionovich@gmail.com'
+EMAIL_HOST_PASSWORD = 'cikd lqzv cris kioi'

@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.urls import path
 
-from .views import RoomCreateView, MyRooms, RoomDetailView, AllRooms, passcheck
+from .views import AllRooms, MyRooms, RoomCreateView, RoomDetailView, passcheck
 
 app_name = 'rooms'
 urlpatterns = [
     path('create/', RoomCreateView.as_view(), name='RoomCreateView'),
     path('my_rooms/', MyRooms.as_view(), name='MyRoomsView'),
     path('all_rooms/', AllRooms.as_view(), name='AllRooms'),
-    path('room/<int:pk>', RoomDetailView.as_view(), name='RoomDetailView'),
+    path('room/<int:pk>', RoomDetailView.as_view(), name='RoomDetail'),
     path('pass_check', passcheck, name='passcheck'),
 
 ]

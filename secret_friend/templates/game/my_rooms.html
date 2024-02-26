@@ -1,6 +1,7 @@
 {% extends 'general/base.html' %}
 <h1>My rooms</h1>
 {% block body %}
+{%if rooms %}
 <table class="table table-hover">
     <thead>
     <tr>
@@ -21,36 +22,16 @@
         <td>Open</td>
         {% endif %}
         <td>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <a href="{% url 'rooms:RoomDetail' pk=room.pk %}"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 Check
-            </button>
+            </button></a>
         </td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
+{%else%}
+<h4>You have no rooms yet. You can join to <a href="{% url 'rooms:AllRooms' %}">someone's room</a> or create your own room</h4>{% endif %}
 
-<!-- Modal -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
 
