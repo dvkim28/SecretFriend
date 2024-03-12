@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Письмо о начале игры</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff3366;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666666;
+        }
+        .wish-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .wish-item {
+            background-color: #ffcc00;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .wish-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .wish-description {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .wish-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Поздравляем!</h1>
+        <p>Игра началась! Каждый участник стал Секретным Сантой для другого. Ниже вы найдете список подарков, которые вам предстоит подарить:</p>
+        <ul class="wish-list">
+            {% for wish in wishes %}
+                <li class="wish-item">
+                    <div class="wish-name">{{ wish.name }}</div>
+                    <div class="wish-description">{{ wish.comment }}</div>
+                    <a href="{{ wish.url }}" class="wish-link">{{ wish.url }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Желаем удачи и приятного веселого времени!</p>
+    </div>
+</body>
+</html>
