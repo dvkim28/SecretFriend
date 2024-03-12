@@ -1,0 +1,39 @@
+{% extends 'general/base.html' %}
+<h1>My rooms</h1>
+{% block body %}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Room name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Password</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for room in rooms %}
+    <tr>
+        <th scope="row">{{ room.name }}</th>
+        <td>{{ room.status }}</td>
+        {% if room.password %}
+        <td>Hidden</td>
+        {% else %}
+        <td>Open</td>
+        {% endif %}
+        <td>
+            <form action="{% url 'rooms:passcheck' %}" method="post">
+                {% csrf_token %}
+                {{ form.password }}
+                <input type="hidden" name="room_id" value="{{ room.pk }}">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<!-- Modal -->
+
+{% endblock %}
+

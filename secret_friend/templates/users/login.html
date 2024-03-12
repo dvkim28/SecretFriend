@@ -1,0 +1,16 @@
+{% extends 'general/base.html' %}
+{%block body %}
+<div class="row">
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="col-md-3 mx-auto">
+        <h1>{{room.name}}</h1>
+    </div>
+</div>
+{% include 'users/general/user_login_form.html' with button='Login' %}
+{%endblock%}

@@ -1,0 +1,89 @@
+{% extends 'general/base.html' %}
+{% block body %}
+<!-- messages -->
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="myAlert">
+            <!-- Add id="myAlert" to the alert div -->
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // JavaScript to close the alert after 3 seconds
+    setTimeout(function() {
+        var alert = document.getElementById("myAlert");
+        alert.classList.add("fade-out");
+        setTimeout(function() {
+            alert.style.display = "none";
+        }, 2000); // Adjust the time for the fade out effect
+    }, 1500);
+</script>
+
+<style>
+    /* CSS to position the alert absolutely */
+     #myAlert {
+        position: fixed;
+        bottom: 20px; /* Adjust the bottom position as needed */
+        right: 20px; /* Adjust the right position as needed */
+        z-index: 9999; /* Ensure the alert appears above other content */
+        opacity: 1;
+        transition: opacity 1s ease; /* Adjust the transition duration as needed */
+    }
+
+    #myAlert.fade-out {
+        opacity: 0;
+    }
+</style>
+
+<div class="container">
+    <div class="jumbotron text-center animated fadeInDown">
+        <h1>Welcome to Secret Santa!</h1>
+        <p>Invite your friends and send them emails with gifts.</p>
+        <a href="#" class="btn btn-lg btn-invite animated pulse">Invite Friends</a>
+    </div>
+    <div class="row content">
+        <div class="col-md-6 animated fadeInLeft">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">How It Works</h2>
+                    <p>1. Sign up and create a group for Secret Santa.</p>
+                    <p>2. Invite your friends to join the group.</p>
+                    <p>3. Each participant draws the name of another participant to give a gift to.</p>
+                    <p>4. Send your gift to the person you drew.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 animated fadeInRight">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Send Invitations</h2>
+                    <p>Invite your friends to join Secret Santa by entering their email addresses below:</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Invitation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Добавляем анимированные фигуры -->
+<div class="animated-figures">
+    <div class="animated-figure" style="top: 20%; left: 10%;"></div>
+    <div class="animated-figure" style="top: 50%; left: 40%;"></div>
+    <div class="animated-figure" style="top: 80%; left: 70%;"></div>
+</div>
+    {% endblock %}
